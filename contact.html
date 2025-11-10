@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Rahul Bhimani AI Portfolio</title>
+    <meta name="description" content="Get in touch with Rahul Bhimani for AI consultation, collaboration, or educational partnerships. Available for projects and speaking engagements.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <!-- Custom Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-navy: #1a1d29;
+            --electric-blue: #00d4ff;
+            --warm-orange: #ff6b35;
+            --light-gray: #f8f9fa;
+            --charcoal: #2c3e50;
+            --off-white: #fafbfc;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fafbfc 0%, #f8f9fa 100%);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--electric-blue) 0%, var(--warm-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-card {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .hover-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--electric-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .form-input:focus {
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+            outline: none;
+        }
+        
+        .form-input.error {
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--electric-blue) 0%, var(--warm-orange) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        .social-link {
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold gradient-text">Rahul Bhimani</a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                        <a href="projects.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Projects</a>
+                        <a href="about.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
+                        <a href="contact.html" class="nav-link text-blue-600 font-medium">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="md:hidden">
+                    <button class="mobile-menu-btn text-gray-700 hover:text-blue-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mobile-menu hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                <a href="projects.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Projects</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">About</a>
+                <a href="contact.html" class="block px-3 py-2 text-blue-600 font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-24 pb-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 fade-in-up">Let's Connect</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 fade-in-up">
+                Ready to collaborate on innovative AI projects? Let's discuss how we can bring your ideas to life.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-4 gap-8 mb-16">
+                <div class="text-center hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Email</h3>
+                    <p class="text-gray-600">rahulbhimani367@gmail.com</p>
+                </div>
+                
+                <div class="text-center hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Availability</h3>
+                    <p class="text-gray-600">Open for collaborations</p>
+                </div>
+                
+                <div class="text-center hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Location</h3>
+                    <p class="text-gray-600">Available for remote work</p>
+                </div>
+                
+                <div class="text-center hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.414L11 9.586V6z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Response Time</h3>
+                    <p class="text-gray-600">Within 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="section-padding bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Send a Message</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Have a project in mind? Want to collaborate? Fill out the form below and I'll get back to you soon.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-lg p-8 fade-in-up">
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" id="name" name="name" required 
+                                   class="form-input w-full px-4 py-3 rounded-lg" 
+                                   placeholder="Your full name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="form-input w-full px-4 py-3 rounded-lg" 
+                                   placeholder="your.email@example.com">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="organization" class="block text-sm font-semibold text-gray-700 mb-2">Organization</label>
+                            <input type="text" id="organization" name="organization" 
+                                   class="form-input w-full px-4 py-3 rounded-lg" 
+                                   placeholder="Company, university, or organization">
+                        </div>
+                        <div>
+                            <label for="project_type" class="block text-sm font-semibold text-gray-700 mb-2">Project Type</label>
+                            <select id="project_type" name="project_type" 
+                                    class="form-input w-full px-4 py-3 rounded-lg">
+                                <option value="">Select project type</option>
+                                <option value="consultation">AI Consultation</option>
+                                <option value="collaboration">Research Collaboration</option>
+                                <option value="development">AI Development</option>
+                                <option value="education">Educational Partnership</option>
+                                <option value="speaking">Speaking Engagement</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject *</label>
+                        <input type="text" id="subject" name="subject" required 
+                               class="form-input w-full px-4 py-3 rounded-lg" 
+                               placeholder="Brief description of your inquiry">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message *</label>
+                        <textarea id="message" name="message" rows="6" required 
+                                  class="form-input w-full px-4 py-3 rounded-lg resize-none" 
+                                  placeholder="Tell me about your project, goals, and how I can help..."></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="budget" class="block text-sm font-semibold text-gray-700 mb-2">Budget Range (Optional)</label>
+                        <select id="budget" name="budget" 
+                                class="form-input w-full px-4 py-3 rounded-lg">
+                            <option value="">Select budget range</option>
+                            <option value="under_5k">Under $5,000</option>
+                            <option value="5k_15k">$5,000 - $15,000</option>
+                            <option value="15k_50k">$15,000 - $50,000</option>
+                            <option value="50k_plus">$50,000+</option>
+                            <option value="discuss">Let's discuss</option>
+                        </select>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn-primary px-8 py-3 rounded-lg font-semibold text-white hover:shadow-lg transition-all">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links -->
+    <section class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Connect With Me</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Follow my work and stay updated with the latest in AI research and development.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <a href="https://github.com/rahulbhimani0708" target="_blank" 
+                   class="social-link hover-card p-6 rounded-xl text-center block">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">GitHub</h3>
+                    <p class="text-gray-600 text-sm">Explore my code repositories and open-source contributions</p>
+                </a>
+                
+                <a href="https://linkedin.com/in/rahul-bhimani-926828284" target="_blank" 
+                   class="social-link hover-card p-6 rounded-xl text-center block">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">LinkedIn</h3>
+                    <p class="text-gray-600 text-sm">Connect professionally and follow my career journey</p>
+                </a>
+                
+                <a href="https://kaggle.com/rahulbhimani" target="_blank" 
+                   class="social-link hover-card p-6 rounded-xl text-center block">
+                    <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-teal-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.825 12.31c-.35-.35-.35-.91 0-1.26l.172-.172c.35-.35.91-.35 1.26 0 .35.35.35.91 0 1.26l-.172.172c-.35.35-.91.35-1.26 0zm-3.54 3.54c-.35-.35-.35-.91 0-1.26l.172-.172c.35-.35.91-.35 1.26 0 .35.35.35.91 0 1.26l-.172.172c-.35.35-.91.35-1.26 0zm-3.54-3.54c-.35-.35-.35-.91 0-1.26l.172-.172c.35-.35.91-.35 1.26 0 .35.35.35.91 0 1.26l-.172.172c-.35.35-.91.35-1.26 0zm-3.54 3.54c-.35-.35-.35-.91 0-1.26l.172-.172c.35-.35.91-.35 1.26 0 .35.35.35.91 0 1.26l-.172.172c-.35.35-.91.35-1.26 0zM12 2L2 7l10 5 10-5-10-5zM4.5 16.5v-8l6 3-6 5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Kaggle</h3>
+                    <p class="text-gray-600 text-sm">Check out my data science competitions and datasets</p>
+                </a>
+                
+                <a href="mailto:rahulbhimani367@gmail.com" 
+                   class="social-link hover-card p-6 rounded-xl text-center block">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Email</h3>
+                    <p class="text-gray-600 text-sm">Send me a direct message for quick inquiries</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration Opportunities -->
+    <section class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Collaboration Opportunities</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    I'm always interested in working on challenging projects that push the boundaries of AI technology.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">AI Consultation</h3>
+                    <p class="text-gray-600 mb-4">Strategic guidance on AI implementation, technology selection, and roadmap development for businesses and organizations.</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Technology assessment and planning</li>
+                        <li>• AI strategy development</li>
+                        <li>• Team training and mentorship</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Research Collaboration</h3>
+                    <p class="text-gray-600 mb-4">Joint research projects in AI, machine learning, and educational technology. Open to academic and industry partnerships.</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Co-authored research papers</li>
+                        <li>• Joint grant applications</li>
+                        <li>• Shared resource development</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">AI Development</h3>
+                    <p class="text-gray-600 mb-4">End-to-end AI solution development, from concept to deployment. Specializing in LLMs, AI agents, and multimodal systems.</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Custom AI model development</li>
+                        <li>• System integration and deployment</li>
+                        <li>• Performance optimization</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Educational Partnership</h3>
+                    <p class="text-gray-600 mb-4">Collaboration with educational institutions for AI curriculum development, workshops, and training programs.</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Curriculum design and development</li>
+                        <li>• Workshop and seminar delivery</li>
+                        <li>• Student mentorship programs</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 1a2 2 0 11-.001 4.001A2 2 0 016 3zm0 8c-2.142 0-4.999.053-5 2v1h10v-1c.001-1.947-2.858-2-5-2zm6.5 1a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 1a3.5 3.5 0 100 7 3.5 3.5 0 000-7z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Speaking Engagements</h3>
+                    <p class="text-gray-600 mb-4">Available for conferences, webinars, and events to speak on AI topics, industry trends, and future technologies.</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Keynote presentations</li>
+                        <li>• Panel discussions</li>
+                        <li>• Technical workshops</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Open Source Projects</h3>
+                    <p class="text-gray-600 mb-4">Contributing to and maintaining open-source AI projects. Always looking for collaborators and contributors.</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Code contributions</li>
+                        <li>• Documentation improvements</li>
+                        <li>• Community support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold gradient-text mb-4">Rahul Bhimani</h3>
+                <p class="text-gray-400 mb-6">AI Researcher • Instructor • Developer</p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://github.com/rahulbhimani0708" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/rahul-bhimani-926828284" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://kaggle.com/rahulbhimani" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.825 12.31c-.35-.35-.35-.91 0-1.26l.172-.172c.35-.35.91-.35 1.26 0 .35.35.35.91 0 1.26l-.172.172c-.35.35-.91.35-1.26 0zm-3.54 3.54c-.35-.35-.35-.91 0-1.26l.172-.172c.35-.35.91-.35 1.26 0 .35.35.35.91 0 1.26l-.172.172c-.35.35-.91.35-1.26 0zm-3.54-3.54c-.35-.35-.35-.91 0-1.26l.172-.172c.35-.35.91-.35 1.26 0 .35.35.35.91 0 1.26l-.172.172c-.35.35-.91.35-1.26 0zm-3.54 3.54c-.35-.35-.35-.91 0-1.26l.172-.172c.35-.35.91-.35 1.26 0 .35.35.35.91 0 1.26l-.172.172c-.35.35-.91.35-1.26 0zM12 2L2 7l10 5 10-5-10-5zM4.5 16.5v-8l6 3-6 5z"/>
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-gray-400 text-sm">
+                    © 2024 Rahul Bhimani. All rights reserved. Built with passion for AI innovation.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

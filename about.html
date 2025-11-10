@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Rahul Bhimani AI Portfolio</title>
+    <meta name="description" content="Learn about Rahul Bhimani's journey as an AI Researcher, Instructor, and Developer specializing in LLMs, AI Agents, and Multimodal Systems.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    
+    <!-- Custom Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-navy: #1a1d29;
+            --electric-blue: #00d4ff;
+            --warm-orange: #ff6b35;
+            --light-gray: #f8f9fa;
+            --charcoal: #2c3e50;
+            --off-white: #fafbfc;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fafbfc 0%, #f8f9fa 100%);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--electric-blue) 0%, var(--warm-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-card {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .hover-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--electric-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .timeline {
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--electric-blue), var(--warm-orange));
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .timeline-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 55%;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+            text-align: left;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 1rem;
+            width: 16px;
+            height: 16px;
+            background: var(--electric-blue);
+            border: 4px solid white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2);
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 1rem;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -20px;
+            border-left-color: white;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -20px;
+            border-right-color: white;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(135deg, var(--electric-blue) 0%, var(--warm-orange) 100%);
+            border-radius: 4px;
+            transition: width 1s ease;
+            width: 0;
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 40px 0;
+            }
+            
+            .timeline::before {
+                left: 2rem;
+            }
+            
+            .timeline-marker {
+                left: 2rem;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 4rem;
+                margin-right: 0;
+                text-align: left;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -20px;
+                border-right-color: white;
+                border-left-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold gradient-text">Rahul Bhimani</a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                        <a href="projects.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Projects</a>
+                        <a href="about.html" class="nav-link text-blue-600 font-medium">About</a>
+                        <a href="contact.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="md:hidden">
+                    <button class="mobile-menu-btn text-gray-700 hover:text-blue-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mobile-menu hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                <a href="projects.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Projects</a>
+                <a href="about.html" class="block px-3 py-2 text-blue-600 font-medium">About</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-24 pb-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-up">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">About Me</h1>
+                    <p class="text-xl md:text-2xl opacity-90 mb-8">
+                        AI Researcher, Instructor, and Developer passionate about building the next generation of intelligent systems.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="projects.html" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all text-center">
+                            View My Work
+                        </a>
+                        <a href="contact.html" class="border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all text-center">
+                            Let's Connect
+                        </a>
+                    </div>
+                </div>
+                <div class="fade-in-up">
+                    <img src="resources/hero-image.png" alt="Rahul Bhimani" class="rounded-xl shadow-2xl w-full max-w-md mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Introduction -->
+    <section class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text">My Journey</h2>
+                <div class="text-xl text-gray-600 leading-relaxed space-y-6">
+                    <p>
+                        Hi there! I'm <strong>Rahul Bhimani</strong>, an AI Researcher, Instructor, and Developer passionate about building the next generation of intelligent systems that merge learning, reasoning, and autonomy.
+                    </p>
+                    <p>
+                        As the <strong>Founder of SkillSync.ai</strong>, my mission is to bridge the gap between human intelligence and artificial intelligence by designing advanced AI Agents, Fine-Tuned LLMs, and Multimodal Learning Systems that empower education, businesses, and developers to evolve together with AI.
+                    </p>
+                    <p>
+                        I believe that AI mastery should be universal — creating a world where anyone can understand, build, and enhance AI using accessible, open, and scalable tools. My long-term goal is to make AI literacy and mastery accessible to every learner, from students to professionals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Timeline -->
+    <section class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Professional Journey</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Key milestones in my career as an AI researcher, developer, and educator.
+                </p>
+            </div>
+            
+            <div class="timeline max-w-6xl mx-auto">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="text-sm text-blue-600 font-semibold mb-2">2024 - Present</div>
+                        <h3 class="text-xl font-bold mb-3">Founder & AI Instructor - SkillSync.ai</h3>
+                        <p class="text-gray-600 mb-4">Leading the development of AI-powered educational platforms, creating fine-tuned LLMs for CBSE curriculum, and building AI tutors that provide personalized learning experiences. Teaching AI concepts to students and educators.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">LLM Fine-tuning</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Educational AI</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">AI Instruction</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="text-sm text-blue-600 font-semibold mb-2">2023 - 2024</div>
+                        <h3 class="text-xl font-bold mb-3">AI Consultant & Developer</h3>
+                        <p class="text-gray-600 mb-4">Worked with startups and enterprises to implement AI-powered ERP systems, automation solutions, and analytics platforms. Specialized in agentic AI frameworks and on-device AI optimization for CPU deployment.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">AI Agents</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">ERP Systems</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Edge AI</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="text-sm text-blue-600 font-semibold mb-2">2022 - 2023</div>
+                        <h3 class="text-xl font-bold mb-3">Multimodal AI Research</h3>
+                        <p class="text-gray-600 mb-4">Conducted extensive research on Vision-Language Models (VLMs) using CLIP and LLaVA architectures. Developed custom multimodal systems for educational content generation and manufacturing analytics.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">Computer Vision</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">Multimodal AI</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">Research</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="text-sm text-blue-600 font-semibold mb-2">2021 - 2022</div>
+                        <h3 class="text-xl font-bold mb-3">AI Systems Developer</h3>
+                        <p class="text-gray-600 mb-4">Built advanced chatbot systems with knowledge graph integration and RAG pipelines. Developed AI-powered business analytics platforms and automated customer support solutions for various industries.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm">Chatbot Development</span>
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm">RAG Systems</span>
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm">Business Analytics</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="text-sm text-blue-600 font-semibold mb-2">2020 - 2021</div>
+                        <h3 class="text-xl font-bold mb-3">Machine Learning Engineer</h3>
+                        <p class="text-gray-600 mb-4">Started career in AI/ML with focus on traditional machine learning and deep learning applications. Worked on data science projects involving predictive analytics, natural language processing, and computer vision.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">Machine Learning</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">Data Science</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">Deep Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Matrix -->
+    <section class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Technical Expertise</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive skills across AI/ML domains with hands-on experience in cutting-edge technologies.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="fade-in-up">
+                    <h3 class="text-2xl font-bold mb-8">Programming & Frameworks</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Python</span>
+                                <span class="text-gray-600">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">PyTorch & TensorFlow</span>
+                                <span class="text-gray-600">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">LangChain & LLM Frameworks</span>
+                                <span class="text-gray-600">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Web Development</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Database Management</span>
+                                <span class="text-gray-600">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up">
+                    <h3 class="text-2xl font-bold mb-8">AI/ML Specializations</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Large Language Models</span>
+                                <span class="text-gray-600">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">AI Agents & Automation</span>
+                                <span class="text-gray-600">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Computer Vision</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">NLP & Text Processing</span>
+                                <span class="text-gray-600">93%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="93"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">MLOps & Deployment</span>
+                                <span class="text-gray-600">82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="82"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests -->
+    <section class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Current Research & Interests</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Exploring the frontiers of artificial intelligence and its applications in real-world scenarios.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Agentic AI Systems</h3>
+                    <p class="text-gray-600">Researching autonomous reasoning loops and self-improving multi-agent ecosystems for complex problem-solving.</p>
+                </div>
+                
+                <div class="hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">On-Device AI</h3>
+                    <p class="text-gray-600">Optimizing LLM deployment for CPU-only environments and edge devices like Raspberry Pi for cost-effective AI solutions.</p>
+                </div>
+                
+                <div class="hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multimodal Integration</h3>
+                    <p class="text-gray-600">Integrating vision-language models with educational systems for enhanced visual learning and comprehension.</p>
+                </div>
+                
+                <div class="hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Knowledge-Grounded AI</h3>
+                    <p class="text-gray-600">Developing chat systems using Retrieval-Augmented Generation with domain-specific knowledge graphs.</p>
+                </div>
+                
+                <div class="hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a1 1 0 102 0V3h4v1a1 1 0 102 0V3a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45-4a2.5 2.5 0 10-1.9 0 .5.5 0 00.9 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">AI in Education</h3>
+                    <p class="text-gray-600">Creating AI-powered educational tools that adapt to individual learning styles and provide personalized instruction.</p>
+                </div>
+                
+                <div class="hover-card p-6 rounded-xl fade-in-up">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Open Source AI</h3>
+                    <p class="text-gray-600">Contributing to open-source AI projects and making advanced AI technologies accessible to the broader community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching & Mentorship -->
+    <section class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Teaching & Mentorship</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Empowering the next generation of AI practitioners through education and mentorship.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-up">
+                    <img src="resources/ai-lab-1.jpg" alt="Teaching & Mentorship" class="rounded-xl shadow-lg w-full">
+                </div>
+                
+                <div class="fade-in-up">
+                    <h3 class="text-2xl font-bold mb-6">Educational Contributions</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Python Programming</h4>
+                                <p class="text-gray-600">Teaching Python fundamentals to students and professionals, focusing on AI and data science applications.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Machine Learning & Deep Learning</h4>
+                                <p class="text-gray-600">Comprehensive courses covering ML algorithms, neural networks, and deep learning frameworks.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">LLM Fundamentals & Prompt Engineering</h4>
+                                <p class="text-gray-600">Advanced training on large language models, prompt engineering techniques, and practical applications.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Real-World AI Applications</h4>
+                                <p class="text-gray-600">Hands-on projects and case studies showing how to build and deploy AI solutions in production environments.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Model Fine-Tuning & Deployment</h4>
+                                <p class="text-gray-600">Specialized training on customizing AI models for specific use cases and deploying them at scale.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section-padding bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Collaborate?</h2>
+                <p class="text-xl mb-8 opacity-90">
+                    Whether you're looking for AI consultation, project collaboration, or educational partnership, I'm here to help bring your ideas to life.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all">
+                        Get In Touch
+                    </a>
+                    <a href="projects.html" class="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all">
+                        View My Projects
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold gradient-text mb-4">Rahul Bhimani</h3>
+                <p class="text-gray-400 mb-6">AI Researcher • Instructor • Developer</p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://github.com/rahulbhimani0708" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/rahul-bhimani-926828284" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://kaggle.com/rahulbhimani" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.825 12.31c-.35-.35-.35-.91 0-1.26l.172-.172c.35-.35.91-.35 1.26 0 .35.35.35.91 0 1.26l-.172.172c-.35.35-.91.35-1.26 0zm-3.54 3.54c-.35-.35-.35-.91 0-1.26l.172-.172c.35-.35.91-.35 1.26 0 .35.35.35.91 0 1.26l-.172.172c-.35.35-.91.35-1.26 0zm-3.54-3.54c-.35-.35-.35-.91 0-1.26l.172-.172c.35-.35.91-.35 1.26 0 .35.35.35.91 0 1.26l-.172.172c-.35.35-.91.35-1.26 0zm-3.54 3.54c-.35-.35-.35-.91 0-1.26l.172-.172c.35-.35.91-.35 1.26 0 .35.35.35.91 0 1.26l-.172.172c-.35.35-.91.35-1.26 0zM12 2L2 7l10 5 10-5-10-5zM4.5 16.5v-8l6 3-6 5z"/>
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-gray-400 text-sm">
+                    © 2024 Rahul Bhimani. All rights reserved. Built with passion for AI innovation.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+    
+    <script>
+        // Animate skill bars when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            const animateSkillBars = () => {
+                skillBars.forEach(bar => {
+                    const rect = bar.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        const width = bar.dataset.width;
+                        bar.style.width = width + '%';
+                    }
+                });
+            };
+            
+            // Animate on scroll
+            window.addEventListener('scroll', animateSkillBars);
+            
+            // Initial animation
+            setTimeout(animateSkillBars, 500);
+            
+            // Animate timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const animateTimeline = () => {
+                timelineItems.forEach((item, index) => {
+                    const rect = item.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.8) {
+                        setTimeout(() => {
+                            item.classList.add('animate');
+                        }, index * 200);
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateTimeline);
+            setTimeout(animateTimeline, 1000);
+        });
+    </script>
+</body>
+</html>
